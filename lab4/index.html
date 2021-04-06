@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <title>Frontend - lab4</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <script>
+      // declare array with fruits
+      const fruits = ['apple', 'banana', 'peach', 'watermelon'];
+
+      // add event listener to document
+      document.addEventListener('DOMContentLoaded', () => {
+        document.write('Content loaded. Go to console to see some fruits.');
+        fruits.forEach(fruit => console.log(fruit)); // output fruits to console
+
+        // render counter element after user prompt
+        document.querySelector('body').append((() => {
+          const value = +prompt('Initial counter values is equal to', 0);
+          return getCounterComponent(isNaN(value) ? 0 : value);
+        })());
+      });
+
+      function getCounterComponent(initialValue) {
+        // initialize elements
+        const counterWrapper = document.createElement('div');
+        const counterValue = document.createElement('span');
+        const incrementButton = document.createElement('button');
+
+        // set elements text
+        counterValue.innerText = initialValue;
+        incrementButton.innerText = '+';
+
+        // add onClick to listener to button
+        incrementButton.addEventListener('click', event => {
+          counterValue.innerText = +counterValue.innerText + 1;
+        });
+
+        // wrap counterWrapper around button and span
+        counterWrapper.append(counterValue, incrementButton);
+        return counterWrapper;
+      };
+  </script>
+</body>
