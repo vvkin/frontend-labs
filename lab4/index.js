@@ -29,7 +29,7 @@ try {
 
 try {
   console.log('Before var', varVariable); // ok
-  var varVariable = 22; 
+  var varVariable = 22;
 } catch (err) {
   console.error(err);
 }
@@ -52,9 +52,9 @@ try {
 }
 
 // function and arrow context difference
-const someDeclarationFunc= function () {
+const someDeclarationFunc = function () {
   console.log('Function this', this);
-}
+};
 const someArrowFunc = () => console.log('Arrow this', this);
 someDeclarationFunc();
 someArrowFunc();
@@ -62,19 +62,20 @@ someArrowFunc();
 // for loop
 {
   for (let i = 0; i < numbers.length; ++i) {
-    (i & 1) && console.log('for', numbers[i]); // only odd i (1, 3, 5, ...)
+    i & 1 && console.log('for', numbers[i]); // only odd i (1, 3, 5, ...)
   }
 }
 // or with continue
 {
   for (let i = 0; i < numbers.length; ++i) {
-    if (i & 1) { // if (!(i & 1)) continue ...
+    if (i & 1) {
+      // if (!(i & 1)) continue ...
       console.log('for continue', numbers[i]);
     } else {
       continue;
     }
   }
-} 
+}
 
 // while loop
 let whileCounter = 0;
@@ -99,7 +100,15 @@ for (const key in numbers) {
 }
 
 // Array is rather collection that an array
-const arrayWithoutType = [undefined, null, 'John Doe', 13, () => { console.log('func') }];
+const arrayWithoutType = [
+  undefined,
+  null,
+  'John Doe',
+  13,
+  () => {
+    console.log('func');
+  },
+];
 console.log(arrayWithoutType);
 
 // indices does not matter
@@ -115,7 +124,7 @@ console.log('Destructured', one, two, three);
 
 // strings
 const someString = 'Some string here';
-console.log('Are quotes equal?', 'aaa' === "aaa");
+console.log('Are quotes equal?', 'aaa' === 'aaa');
 
 // indices work like with arrays
 console.log(someString[0]); // 'S'
@@ -129,7 +138,10 @@ console.log('Lower', someString.toLowerCase());
 // parseInt or + ?
 const almostNumericString = '123abc';
 console.log(`+'${almostNumericString}' => `, +almostNumericString);
-console.log(`parseInt('${almostNumericString}') => `, parseInt(almostNumericString));
+console.log(
+  `parseInt('${almostNumericString}') => `,
+  parseInt(almostNumericString)
+);
 
 // interesting typing
 console.log(('ba' + +'???' + 'a').toLowerCase()); // banana
@@ -149,7 +161,6 @@ const objectJohn = {
   // or sayHi: funtion() {}, but not sayHi: () => {}
 };
 
-
 // iterate over with for in
 for (const objectKey in objectJohn) {
   console.log(`${objectKey}: ${objectJohn[objectKey]}`);
@@ -168,9 +179,9 @@ const { firstName, age } = objectJohn;
 console.log(firstName, age);
 
 // spread opperator
-const obj = {'a': 1, 'b': 2, 'c': 3};
+const obj = { a: 1, b: 2, c: 3 };
 const [d, e] = [5, 6];
-console.log('Spread', {...obj, d, e});
+console.log('Spread', { ...obj, d, e });
 
 // PART II: Work with functions
 // function declaration
@@ -179,7 +190,7 @@ function func() {
 }
 
 // function expression
-const anotherFunc = function() { 
+const anotherFunc = function () {
   return 'func2';
 };
 
@@ -194,12 +205,15 @@ console.log(namedExpression.name); // named;
 
 // recursion with named function expression
 const factorial = function factorial(n) {
-  return (n >= 1) ? n * factorial(n - 1) : 1;
+  return n >= 1 ? n * factorial(n - 1) : 1;
 };
 
 // anonymous function
 console.log('Before function:', numbers);
-console.log('After function:', numbers.map(x => x + 1));
+console.log(
+  'After function:',
+  numbers.map(x => x + 1)
+);
 
 // default arguments
 const sumValues = (a = 1, b = 2) => a + b;
@@ -212,8 +226,11 @@ const compose = (...funcs) => {
   return funcs.reduce((left, right) => {
     return (...args) => left(right(args));
   });
-}
-const composed = compose(x => x + 1, x => x * 2);
+};
+const composed = compose(
+  x => x + 1,
+  x => x * 2
+);
 composed(5); // 12
 
 // pointers
@@ -237,7 +254,7 @@ const Counter = (initialValue = 0) => {
     get: () => value,
     inc: () => { ++value },
     dec: () => { --value },
-  }
+  };
 };
 
 // IEFE
