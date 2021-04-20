@@ -252,8 +252,12 @@ const Counter = (initialValue = 0) => {
   let value = initialValue;
   return {
     get: () => value,
-    inc: () => { ++value },
-    dec: () => { --value },
+    inc: () => {
+      ++value;
+    },
+    dec: () => {
+      --value;
+    },
   };
 };
 
