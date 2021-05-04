@@ -1,0 +1,49 @@
+.container {
+  padding-top: 30px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+#form {
+  margin: 20px 0;
+}
+
+.form__submit {
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  margin-left: 10px;
+  background-color: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.todo {
+  list-style: none;
+  padding: 0;
+}
+
+.todo__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.todo__checkbox {
+  margin-right: 10px;
+}
+
+.todo__remove {
+  border: none;
+  border-radius: 50%;
+  background-color: #cb2431;
+  color: #fff;
+  cursor: pointer;
+}
+
+.todo__completed {
+  text-decoration: line-through;
+}
